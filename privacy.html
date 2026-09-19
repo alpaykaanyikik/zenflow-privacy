@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ZenFlow — Privacy Policy / Gizlilik Politikası</title>
+<style>
+  :root { --bg:#F7F5F2; --surface:#FFFFFF; --text:#2D2A26; --muted:#8A8580;
+          --accent:#A8D5C2; --border:#DED9D3; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+         background:var(--bg); color:var(--text); line-height:1.65; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 20px 80px; }
+  header { text-align:center; padding:24px 0 8px; }
+  header .logo { font-size:40px; }
+  h1 { font-size:1.6rem; margin:8px 0 4px; }
+  .updated { color:var(--muted); font-size:.85rem; }
+  .lang-nav { display:flex; gap:8px; justify-content:center; margin:20px 0 8px; }
+  .lang-nav a { text-decoration:none; color:var(--text); background:var(--surface);
+                border:1px solid var(--border); border-radius:20px; padding:6px 16px; font-size:.9rem; }
+  section.card { background:var(--surface); border:1px solid var(--border);
+                 border-radius:16px; padding:20px 22px; margin:16px 0; }
+  h2 { font-size:1.15rem; margin:28px 0 8px; border-bottom:2px solid var(--accent);
+       padding-bottom:6px; display:inline-block; }
+  h3 { font-size:1rem; margin:18px 0 6px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:.9rem; }
+  th,td { text-align:left; padding:8px 10px; border:1px solid var(--border); }
+  th { background:var(--bg); }
+  .footer { text-align:center; color:var(--muted); font-size:.8rem; margin-top:40px; }
+  a { color:#3a8f74; }
+  hr { border:none; border-top:1px solid var(--border); margin:40px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">🌿</div>
+    <h1>ZenFlow — Privacy Policy</h1>
+    <div class="updated">Last updated / Son güncelleme: 2026-06-20</div>
+    <nav class="lang-nav">
+      <a href="#en">English</a>
+      <a href="#tr">Türkçe</a>
+    </nav>
+  </header>
+
+  <!-- ENGLISH -->
+  <div id="en">
+  <h2>English</h2>
+
+  <section class="card">
+    <h3>1. Introduction</h3>
+    <p>ZenFlow ("we", "our", "the app") is a privacy-first journaling application.
+    We are committed to protecting your personal data and being transparent about how the app works.</p>
+
+    <h3>2. Data We Collect</h3>
+    <p>ZenFlow collects <strong>no data on our servers</strong>. All information you enter
+    stays exclusively on your device.</p>
+    <table>
+      <tr><th>Data Type</th><th>Where Stored</th><th>Shared</th></tr>
+      <tr><td>Journal text entries</td><td>Local device (Isar DB)</td><td>Never</td></tr>
+      <tr><td>Audio recordings</td><td>Local device filesystem</td><td>Never</td></tr>
+      <tr><td>Heart rate &amp; health metrics</td><td>Local device (Isar DB)</td><td>Never</td></tr>
+      <tr><td>Location (city-level)</td><td>Local device (Isar DB)</td><td>Never</td></tr>
+      <tr><td>Weather data</td><td>Fetched from OpenWeatherMap API¹</td><td>Never</td></tr>
+      <tr><td>Backup files</td><td>User's own Google Drive²</td><td>Never</td></tr>
+    </table>
+    <p style="font-size:.85rem;color:var(--muted)">
+      ¹ A city-level GPS coordinate is sent to OpenWeatherMap solely to fetch current weather.
+      No personal identifier accompanies this request.<br>
+      ² Cloud backup is optional and fully user-controlled. Files are AES-256 encrypted on your
+      device before upload. We never access your Google Drive.</p>
+
+    <h3>3. Health Data</h3>
+    <p>ZenFlow reads heart rate, sleep, and related metrics from Apple HealthKit (iOS) or
+    Google Health Connect (Android) <strong>only when you open the app and with your explicit
+    permission</strong>. This data is never transmitted to our servers, never shared with
+    advertisers or analytics platforms, and is used solely to enrich your journal entry context.</p>
+
+    <h3>4. Permissions</h3>
+    <table>
+      <tr><th>Permission</th><th>Purpose</th></tr>
+      <tr><td>Microphone</td><td>Voice note recording (stored locally)</td></tr>
+      <tr><td>Location (approximate)</td><td>City-level weather context for entries</td></tr>
+      <tr><td>Health / HealthKit</td><td>Heart rate, sleep, HRV read access</td></tr>
+      <tr><td>Notifications</td><td>Weekly wellness summary; smart BPM alerts</td></tr>
+      <tr><td>Internet</td><td>Weather API calls and optional backup only</td></tr>
+      <tr><td>Google Sign-In</td><td>Optional encrypted backup to your Google Drive</td></tr>
+    </table>
+
+    <h3>5. In-App Purchases</h3>
+    <p>Purchases are processed by the Google Play Store (or Apple App Store). ZenFlow does not
+    receive or store your payment information.</p>
+
+    <h3>6. Analytics &amp; Crash Reporting</h3>
+    <p>ZenFlow contains <strong>no advertising or analytics SDK</strong> (no Firebase Analytics,
+    Mixpanel, etc.) and does not track your behavior or build any usage profile.</p>
+    <p>Optional crash reporting via <strong>Sentry</strong> may be enabled in release builds to
+    capture anonymous crash diagnostics. When enabled, it sends <strong>no personal data</strong>
+    and <strong>no usage traces</strong> — only technical crash stack traces needed to fix bugs.</p>
+
+    <h3>7. Children's Privacy</h3>
+    <p>ZenFlow is not directed at children under 13. We do not knowingly collect information from children.</p>
+
+    <h3>8. Data Deletion</h3>
+    <p>ZenFlow creates no account. You can permanently remove all data by deleting entries within
+    the app or uninstalling the app from your device.</p>
+
+    <h3>9. Changes &amp; Contact</h3>
+    <p>We will notify users via an in-app notice when this policy changes materially.
+    For privacy questions: <a href="mailto:kaan.yikik@gmail.com">kaan.yikik@gmail.com</a></p>
+  </section>
+  </div>
+
+  <hr>
+
+  <!-- TÜRKÇE -->
+  <div id="tr">
+  <h2>Türkçe</h2>
+
+  <section class="card">
+    <h3>1. Giriş</h3>
+    <p>ZenFlow ("biz", "uygulama"), gizliliği ön planda tutan bir günlük uygulamasıdır.
+    Kişisel verilerinizi korumayı ve uygulamanın nasıl çalıştığı konusunda şeffaf olmayı taahhüt ediyoruz.</p>
+
+    <h3>2. Topladığımız Veriler</h3>
+    <p>ZenFlow <strong>sunucularında hiçbir veri toplamaz</strong>. Girdiğiniz tüm bilgiler
+    yalnızca cihazınızda saklanır.</p>
+    <table>
+      <tr><th>Veri Türü</th><th>Nerede Saklanır</th><th>Paylaşım</th></tr>
+      <tr><td>Günlük metin girişleri</td><td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
+      <tr><td>Ses kayıtları</td><td>Yerel cihaz dosya sistemi</td><td>Asla</td></tr>
+      <tr><td>Kalp atış hızı &amp; sağlık</td><td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
+      <tr><td>Konum (şehir düzeyi)</td><td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
+      <tr><td>Hava durumu</td><td>OpenWeatherMap API'sinden¹</td><td>Asla</td></tr>
+      <tr><td>Yedek dosyalar</td><td>Kullanıcının Google Drive'ı²</td><td>Asla</td></tr>
+    </table>
+    <p style="font-size:.85rem;color:var(--muted)">
+      ¹ Yalnızca hava durumunu almak için şehir düzeyinde GPS koordinatı OpenWeatherMap'e
+      gönderilir. Bu istekle birlikte hiçbir kişisel tanımlayıcı iletilmez.<br>
+      ² Bulut yedekleme isteğe bağlıdır. Dosyalar yüklenmeden önce cihazınızda AES-256 ile
+      şifrelenir. Google Drive'ınıza hiçbir zaman erişmeyiz.</p>
+
+    <h3>3. Sağlık Verileri</h3>
+    <p>ZenFlow kalp atış hızı, uyku ve ilgili ölçümleri yalnızca <strong>uygulamayı açtığınızda
+    ve açık izninizle</strong> Apple HealthKit (iOS) veya Google Health Connect (Android) üzerinden
+    okur. Bu veri sunucularımıza iletilmez, reklamcılarla/analitik platformlarla paylaşılmaz ve
+    yalnızca günlük bağlamını zenginleştirmek için kullanılır.</p>
+
+    <h3>4. İzinler</h3>
+    <table>
+      <tr><th>İzin</th><th>Amaç</th></tr>
+      <tr><td>Mikrofon</td><td>Sesli not kaydı (yerel saklanır)</td></tr>
+      <tr><td>Konum (yaklaşık)</td><td>Şehir düzeyinde hava durumu bağlamı</td></tr>
+      <tr><td>Sağlık / HealthKit</td><td>Kalp hızı, uyku, HRV okuma</td></tr>
+      <tr><td>Bildirimler</td><td>Haftalık özet; akıllı kalp hızı uyarıları</td></tr>
+      <tr><td>İnternet</td><td>Yalnızca hava durumu API ve isteğe bağlı yedek</td></tr>
+      <tr><td>Google Oturum Açma</td><td>Google Drive'a isteğe bağlı şifreli yedek</td></tr>
+    </table>
+
+    <h3>5. Uygulama İçi Satın Alımlar</h3>
+    <p>Satın alımlar Google Play Store (veya Apple App Store) tarafından işlenir. ZenFlow ödeme
+    bilgilerinizi almaz veya saklamaz.</p>
+
+    <h3>6. Analitik &amp; Çökme Raporlaması</h3>
+    <p>ZenFlow <strong>reklam veya analitik SDK'sı içermez</strong> (Firebase Analytics, Mixpanel
+    vb. yok) ve davranışınızı izlemez, kullanım profili oluşturmaz.</p>
+    <p>Sürüm yapılarında, anonim çökme tanılaması için isteğe bağlı <strong>Sentry</strong> çökme
+    raporlaması etkinleştirilebilir. Etkinleştirildiğinde <strong>hiçbir kişisel veri</strong> ve
+    <strong>hiçbir kullanım izi</strong> göndermez — yalnızca hataları düzeltmek için gereken
+    teknik çökme yığın izlerini iletir.</p>
+
+    <h3>7. Çocukların Gizliliği</h3>
+    <p>ZenFlow 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek bilgi toplamayız.</p>
+
+    <h3>8. Veri Silme</h3>
+    <p>ZenFlow hesap oluşturmaz. Uygulama içinde kayıtları silerek veya uygulamayı cihazınızdan
+    kaldırarak tüm verilerinizi kalıcı olarak kaldırabilirsiniz.</p>
+
+    <h3>9. Değişiklikler &amp; İletişim</h3>
+    <p>Bu politikada önemli bir değişiklik olduğunda kullanıcıları uygulama içi bildirimle
+    haberdar edeceğiz. Gizlilik sorularınız için:
+    <a href="mailto:kaan.yikik@gmail.com">kaan.yikik@gmail.com</a></p>
+  </section>
+  </div>
+
+  <div class="footer">© 2026 ZenFlow · com.zenflow.app.zenflow</div>
+</div>
+</body>
+</html>
