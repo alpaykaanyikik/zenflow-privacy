@@ -36,7 +36,7 @@
   <header>
     <div class="logo">🌿</div>
     <h1>ZenFlow — Privacy Policy</h1>
-    <div class="updated">Last updated / Son güncelleme: 2026-06-20</div>
+    <div class="updated">Last updated / Son güncelleme: 2026-09-25</div>
     <nav class="lang-nav">
       <a href="#en">English</a>
       <a href="#tr">Türkçe</a>
@@ -49,63 +49,104 @@
 
   <section class="card">
     <h3>1. Introduction</h3>
-    <p>ZenFlow ("we", "our", "the app") is a privacy-first journaling application.
-    We are committed to protecting your personal data and being transparent about how the app works.</p>
+    <p>ZenFlow ("we", "our", "the app") is a privacy-first journaling application. ZenFlow has
+    no user accounts, no profiles and no servers of its own. This page describes exactly what
+    the app stores, what it never stores, and the few requests that leave your device.</p>
 
     <h3>2. Data We Collect</h3>
-    <p>ZenFlow collects <strong>no data on our servers</strong>. All information you enter
-    stays exclusively on your device.</p>
+    <p>ZenFlow collects <strong>no data</strong>. We operate no servers and receive nothing from
+    the app — there is nothing to sign in to, and no copy of your journal exists anywhere except
+    on your device. This matches the <em>Data Not Collected</em> declaration on our App Store
+    Connect App Privacy form and the empty collected-data list in the app's privacy manifest.</p>
     <table>
-      <tr><th>Data Type</th><th>Where Stored</th><th>Shared</th></tr>
+      <tr><th>Data Type</th><th>Where Stored</th><th>Sent To Us</th></tr>
       <tr><td>Journal text entries</td><td>Local device (Isar DB)</td><td>Never</td></tr>
-      <tr><td>Audio recordings</td><td>Local device filesystem</td><td>Never</td></tr>
-      <tr><td>Heart rate &amp; health metrics</td><td>Local device (Isar DB)</td><td>Never</td></tr>
-      <tr><td>Location (city-level)</td><td>Local device (Isar DB)</td><td>Never</td></tr>
-      <tr><td>Weather data</td><td>Fetched from OpenWeatherMap API¹</td><td>Never</td></tr>
-      <tr><td>Backup files</td><td>User's own Google Drive²</td><td>Never</td></tr>
+      <tr><td>Voice recordings</td><td>Local device filesystem</td><td>Never</td></tr>
+      <tr><td>Voice transcripts</td><td>Produced on device, saved with the entry</td><td>Never</td></tr>
+      <tr><td>Heart rate, HRV, sleep, blood oxygen, respiratory rate, body temperature</td>
+          <td>Local device (Isar DB)</td><td>Never</td></tr>
+      <tr><td>Approximate location &amp; place name</td><td>Local device (Isar DB)</td><td>Never¹</td></tr>
+      <tr><td>Settings, theme, language, purchase status</td><td>Local device (app preferences)</td><td>Never</td></tr>
     </table>
     <p style="font-size:.85rem;color:var(--muted)">
-      ¹ A city-level GPS coordinate is sent to OpenWeatherMap solely to fetch current weather.
-      No personal identifier accompanies this request.<br>
-      ² Cloud backup is optional and fully user-controlled. Files are AES-256 encrypted on your
-      device before upload. We never access your Google Drive.</p>
+      ¹ Your coordinates are never sent to us. They are rounded on your device and passed to your
+      operating system's own geocoding service to obtain a place name — see section 3.</p>
 
-    <h3>3. Health Data</h3>
-    <p>ZenFlow reads heart rate, sleep, and related metrics from Apple HealthKit (iOS) or
-    Google Health Connect (Android) <strong>only when you open the app and with your explicit
-    permission</strong>. This data is never transmitted to our servers, never shared with
-    advertisers or analytics platforms, and is used solely to enrich your journal entry context.</p>
+    <h3>3. What Leaves Your Device</h3>
+    <p>Only three things ever leave your device, and none of them reach us:</p>
+    <table>
+      <tr><th>Request</th><th>Goes To</th><th>Contains</th></tr>
+      <tr><td>Place-name lookup</td><td>Your OS geocoding service (Apple on iOS, Google on Android)</td>
+          <td>A coordinate rounded to two decimal places (~1 km), with no identifier attached</td></tr>
+      <tr><td>Purchases &amp; restores</td><td>Apple App Store / Google Play</td>
+          <td>Handled entirely by the store under its own privacy policy</td></tr>
+      <tr><td>Legal page links</td><td>This website, in your browser</td>
+          <td>An ordinary page request you initiate by tapping a link</td></tr>
+    </table>
+    <p>The place-name lookup happens only if you grant location access, and only when an entry
+    captures context. ZenFlow rounds the coordinate <em>before</em> using it, keeps the result on
+    your device, and never attaches a name, device ID or any other identifier to the request.
+    Deny location access and the request never happens at all.</p>
+    <p>Beyond these, ZenFlow makes no network requests of its own. There is no analytics, no advertising,
+    no crash reporting, no cloud backup, and no content or font downloaded at runtime.</p>
 
-    <h3>4. Permissions</h3>
+    <h3>4. Health Data</h3>
+    <p>With your explicit permission, ZenFlow <strong>reads</strong> heart rate, heart rate
+    variability, sleep, blood oxygen, respiratory rate and body temperature from Apple HealthKit
+    (iOS) or Health Connect (Android) to colour your Aura sphere and add context to entries.</p>
+    <p>Access is <strong>read-only</strong>: the app never writes anything back to Health, and it
+    does not request write permission. Readings are stored only in the local database on your
+    device. They are never transmitted to us, never shared with advertisers or analytics
+    platforms, and are used for nothing but your own journal context. Declining health access
+    leaves the rest of the app fully usable.</p>
+
+    <h3>5. Voice Notes &amp; Transcription</h3>
+    <p>Voice notes are recorded into the app's own storage on your device. Transcription runs
+    <strong>on the device</strong>; ZenFlow explicitly requires on-device recognition, so your
+    audio is not sent to Apple's or Google's speech servers. If a device does not have the
+    on-device language pack installed, voice input is disabled and you are told why — the app
+    does not quietly fall back to server-based recognition. Deleting an entry deletes its
+    recording.</p>
+
+    <h3>6. Permissions</h3>
     <table>
       <tr><th>Permission</th><th>Purpose</th></tr>
-      <tr><td>Microphone</td><td>Voice note recording (stored locally)</td></tr>
-      <tr><td>Location (approximate)</td><td>City-level weather context for entries</td></tr>
-      <tr><td>Health / HealthKit</td><td>Heart rate, sleep, HRV read access</td></tr>
-      <tr><td>Notifications</td><td>Weekly wellness summary; smart BPM alerts</td></tr>
-      <tr><td>Internet</td><td>Weather API calls and optional backup only</td></tr>
-      <tr><td>Google Sign-In</td><td>Optional encrypted backup to your Google Drive</td></tr>
+      <tr><td>Microphone</td><td>Recording voice notes (stored on your device)</td></tr>
+      <tr><td>Speech recognition</td><td>On-device transcription of those recordings</td></tr>
+      <tr><td>Location (approximate)</td><td>Optional place name for an entry; coordinate rounded to ~1 km</td></tr>
+      <tr><td>Health / HealthKit / Health Connect</td><td>Read-only access to the metrics listed in section 4</td></tr>
+      <tr><td>Notifications</td><td>Weekly wellness summary and heart-rate alerts, scheduled locally</td></tr>
+      <tr><td>Internet</td><td>Place-name lookup, store purchases and opening these legal pages only</td></tr>
     </table>
+    <p>Every permission is optional. Journaling works fully without any of them.</p>
 
-    <h3>5. In-App Purchases</h3>
-    <p>Purchases are processed by the Google Play Store (or Apple App Store). ZenFlow does not
-    receive or store your payment information.</p>
+    <h3>7. In-App Purchases</h3>
+    <p>Purchases and subscriptions are processed by the Apple App Store or Google Play Store.
+    ZenFlow never receives or stores your payment information, and no account is created. What
+    you have unlocked is recorded only on your device.</p>
 
-    <h3>6. Analytics &amp; Crash Reporting</h3>
-    <p>ZenFlow contains <strong>no advertising or analytics SDK</strong> (no Firebase Analytics,
-    Mixpanel, etc.) and does not track your behavior or build any usage profile.</p>
-    <p>Optional crash reporting via <strong>Sentry</strong> may be enabled in release builds to
-    capture anonymous crash diagnostics. When enabled, it sends <strong>no personal data</strong>
-    and <strong>no usage traces</strong> — only technical crash stack traces needed to fix bugs.</p>
+    <h3>8. No Analytics, Advertising or Crash Reporting</h3>
+    <p>ZenFlow contains <strong>no advertising, analytics, attribution or crash-reporting
+    SDK</strong> (no Firebase Analytics, Mixpanel, Sentry or similar). It does not track your
+    behaviour, build a usage profile, or assign you an identifier. The app's privacy manifest
+    declares no tracking and no tracking domains.</p>
+    <p>Typefaces are bundled inside the app, so ZenFlow does not fetch fonts from a content
+    delivery network on launch.</p>
+    <p>Earlier versions offered an optional Google Drive backup and optional crash reporting.
+    Both features, and the third-party SDKs behind them, have been removed from the app
+    entirely. ZenFlow no longer has any cloud backup, and no longer asks you to sign in with a
+    Google account.</p>
 
-    <h3>7. Children's Privacy</h3>
+    <h3>9. Children's Privacy</h3>
     <p>ZenFlow is not directed at children under 13. We do not knowingly collect information from children.</p>
 
-    <h3>8. Data Deletion</h3>
-    <p>ZenFlow creates no account. You can permanently remove all data by deleting entries within
-    the app or uninstalling the app from your device.</p>
+    <h3>10. Data Deletion</h3>
+    <p>ZenFlow creates no account, so there is nothing for us to delete and nothing to request
+    from us. You can permanently remove your data by deleting entries within the app — which
+    also deletes their recordings — or by uninstalling the app, which removes its database and
+    files from your device.</p>
 
-    <h3>9. Changes &amp; Contact</h3>
+    <h3>11. Changes &amp; Contact</h3>
     <p>We will notify users via an in-app notice when this policy changes materially.
     For privacy questions: <a href="mailto:kaan.yikik@gmail.com">kaan.yikik@gmail.com</a></p>
   </section>
@@ -120,63 +161,105 @@
   <section class="card">
     <h3>1. Giriş</h3>
     <p>ZenFlow ("biz", "uygulama"), gizliliği ön planda tutan bir günlük uygulamasıdır.
-    Kişisel verilerinizi korumayı ve uygulamanın nasıl çalıştığı konusunda şeffaf olmayı taahhüt ediyoruz.</p>
+    ZenFlow'da kullanıcı hesabı, profil ve bize ait hiçbir sunucu yoktur. Bu sayfa uygulamanın
+    neyi sakladığını, neyi asla saklamadığını ve cihazınızdan çıkan birkaç isteği tam olarak
+    anlatır.</p>
 
     <h3>2. Topladığımız Veriler</h3>
-    <p>ZenFlow <strong>sunucularında hiçbir veri toplamaz</strong>. Girdiğiniz tüm bilgiler
-    yalnızca cihazınızda saklanır.</p>
+    <p>ZenFlow <strong>hiçbir veri toplamaz</strong>. Hiçbir sunucu işletmiyoruz ve uygulamadan
+    bize hiçbir şey ulaşmıyor — giriş yapılacak bir hesap yok ve günlüğünüzün cihazınız dışında
+    hiçbir kopyası yok. Bu durum, App Store Connect'teki App Privacy formumuzdaki
+    <em>"Data Not Collected"</em> beyanı ve uygulamanın gizlilik manifestindeki boş veri listesi
+    ile birebir örtüşür.</p>
     <table>
-      <tr><th>Veri Türü</th><th>Nerede Saklanır</th><th>Paylaşım</th></tr>
+      <tr><th>Veri Türü</th><th>Nerede Saklanır</th><th>Bize Gönderilir mi</th></tr>
       <tr><td>Günlük metin girişleri</td><td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
       <tr><td>Ses kayıtları</td><td>Yerel cihaz dosya sistemi</td><td>Asla</td></tr>
-      <tr><td>Kalp atış hızı &amp; sağlık</td><td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
-      <tr><td>Konum (şehir düzeyi)</td><td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
-      <tr><td>Hava durumu</td><td>OpenWeatherMap API'sinden¹</td><td>Asla</td></tr>
-      <tr><td>Yedek dosyalar</td><td>Kullanıcının Google Drive'ı²</td><td>Asla</td></tr>
+      <tr><td>Ses çözümleri (metne dökme)</td><td>Cihazda üretilir, kayıtla birlikte saklanır</td><td>Asla</td></tr>
+      <tr><td>Kalp atış hızı, HRV, uyku, kandaki oksijen, solunum hızı, vücut sıcaklığı</td>
+          <td>Yerel cihaz (Isar DB)</td><td>Asla</td></tr>
+      <tr><td>Yaklaşık konum &amp; yer adı</td><td>Yerel cihaz (Isar DB)</td><td>Asla¹</td></tr>
+      <tr><td>Ayarlar, tema, dil, satın alma durumu</td><td>Yerel cihaz (uygulama tercihleri)</td><td>Asla</td></tr>
     </table>
     <p style="font-size:.85rem;color:var(--muted)">
-      ¹ Yalnızca hava durumunu almak için şehir düzeyinde GPS koordinatı OpenWeatherMap'e
-      gönderilir. Bu istekle birlikte hiçbir kişisel tanımlayıcı iletilmez.<br>
-      ² Bulut yedekleme isteğe bağlıdır. Dosyalar yüklenmeden önce cihazınızda AES-256 ile
-      şifrelenir. Google Drive'ınıza hiçbir zaman erişmeyiz.</p>
+      ¹ Koordinatlarınız bize hiçbir zaman gönderilmez. Cihazınızda yuvarlanır ve yer adını almak
+      için işletim sisteminizin kendi coğrafi kodlama servisine iletilir — bkz. bölüm 3.</p>
 
-    <h3>3. Sağlık Verileri</h3>
-    <p>ZenFlow kalp atış hızı, uyku ve ilgili ölçümleri yalnızca <strong>uygulamayı açtığınızda
-    ve açık izninizle</strong> Apple HealthKit (iOS) veya Google Health Connect (Android) üzerinden
-    okur. Bu veri sunucularımıza iletilmez, reklamcılarla/analitik platformlarla paylaşılmaz ve
-    yalnızca günlük bağlamını zenginleştirmek için kullanılır.</p>
+    <h3>3. Cihazınızdan Çıkanlar</h3>
+    <p>Cihazınızdan yalnızca üç şey çıkar ve hiçbiri bize ulaşmaz:</p>
+    <table>
+      <tr><th>İstek</th><th>Nereye Gider</th><th>İçeriği</th></tr>
+      <tr><td>Yer adı sorgusu</td><td>İşletim sisteminizin coğrafi kodlama servisi (iOS'ta Apple, Android'de Google)</td>
+          <td>İki ondalığa yuvarlanmış (~1 km) bir koordinat; hiçbir tanımlayıcı eklenmez</td></tr>
+      <tr><td>Satın alma ve geri yükleme</td><td>Apple App Store / Google Play</td>
+          <td>Tamamen mağaza tarafından, kendi gizlilik politikası kapsamında yürütülür</td></tr>
+      <tr><td>Yasal sayfa bağlantıları</td><td>Tarayıcınızda bu web sitesi</td>
+          <td>Bağlantıya dokunarak sizin başlattığınız sıradan bir sayfa isteği</td></tr>
+    </table>
+    <p>Yer adı sorgusu yalnızca konum iznini verdiyseniz ve yalnızca bir kayıt bağlam topladığında
+    yapılır. ZenFlow koordinatı kullanmadan <em>önce</em> yuvarlar, sonucu cihazınızda tutar ve
+    isteğe isim, cihaz kimliği veya başka hiçbir tanımlayıcı eklemez. Konum iznini vermezseniz bu
+    istek hiç oluşmaz.</p>
+    <p>Bunların dışında ZenFlow kendi adına hiçbir ağ isteği yapmaz. Analitik, reklam, çökme raporlaması,
+    bulut yedekleme yoktur; çalışma anında indirilen içerik veya yazı tipi de yoktur.</p>
 
-    <h3>4. İzinler</h3>
+    <h3>4. Sağlık Verileri</h3>
+    <p>Açık izninizle ZenFlow, Aura küresini renklendirmek ve kayıtlarınıza bağlam eklemek için
+    Apple HealthKit (iOS) veya Health Connect (Android) üzerinden kalp atış hızı, kalp hızı
+    değişkenliği, uyku, kandaki oksijen, solunum hızı ve vücut sıcaklığını <strong>okur</strong>.</p>
+    <p>Erişim <strong>yalnızca okumadır</strong>: uygulama Sağlık'a hiçbir şey geri yazmaz ve
+    yazma izni istemez. Ölçümler yalnızca cihazınızdaki yerel veritabanında saklanır. Bize
+    iletilmez, reklamcılarla veya analitik platformlarla paylaşılmaz ve kendi günlük bağlamınız
+    dışında hiçbir şey için kullanılmaz. Sağlık erişimini reddetseniz de uygulamanın geri kalanı
+    eksiksiz çalışır.</p>
+
+    <h3>5. Sesli Notlar &amp; Metne Dökme</h3>
+    <p>Sesli notlar cihazınızdaki uygulama deposuna kaydedilir. Metne dökme işlemi
+    <strong>cihaz üzerinde</strong> çalışır; ZenFlow cihaz içi tanımayı açıkça zorunlu kılar, bu
+    yüzden sesiniz Apple'ın veya Google'ın konuşma sunucularına gönderilmez. Cihazda o dilin
+    cihaz içi paketi yüklü değilse sesli giriş devre dışı bırakılır ve nedeni size söylenir —
+    uygulama sessizce sunucu tabanlı tanımaya düşmez. Bir kaydı sildiğinizde ses dosyası da
+    silinir.</p>
+
+    <h3>6. İzinler</h3>
     <table>
       <tr><th>İzin</th><th>Amaç</th></tr>
-      <tr><td>Mikrofon</td><td>Sesli not kaydı (yerel saklanır)</td></tr>
-      <tr><td>Konum (yaklaşık)</td><td>Şehir düzeyinde hava durumu bağlamı</td></tr>
-      <tr><td>Sağlık / HealthKit</td><td>Kalp hızı, uyku, HRV okuma</td></tr>
-      <tr><td>Bildirimler</td><td>Haftalık özet; akıllı kalp hızı uyarıları</td></tr>
-      <tr><td>İnternet</td><td>Yalnızca hava durumu API ve isteğe bağlı yedek</td></tr>
-      <tr><td>Google Oturum Açma</td><td>Google Drive'a isteğe bağlı şifreli yedek</td></tr>
+      <tr><td>Mikrofon</td><td>Sesli not kaydı (cihazınızda saklanır)</td></tr>
+      <tr><td>Konuşma tanıma</td><td>Bu kayıtların cihaz üzerinde metne dökülmesi</td></tr>
+      <tr><td>Konum (yaklaşık)</td><td>Kayda isteğe bağlı yer adı; koordinat ~1 km'ye yuvarlanır</td></tr>
+      <tr><td>Sağlık / HealthKit / Health Connect</td><td>Bölüm 4'teki ölçümlere yalnızca okuma erişimi</td></tr>
+      <tr><td>Bildirimler</td><td>Haftalık iyilik özeti ve kalp hızı uyarıları; cihazda planlanır</td></tr>
+      <tr><td>İnternet</td><td>Yalnızca yer adı sorgusu, mağaza satın alımları ve bu yasal sayfaların açılması</td></tr>
     </table>
+    <p>Tüm izinler isteğe bağlıdır. Günlük tutmak hiçbiri olmadan da eksiksiz çalışır.</p>
 
-    <h3>5. Uygulama İçi Satın Alımlar</h3>
-    <p>Satın alımlar Google Play Store (veya Apple App Store) tarafından işlenir. ZenFlow ödeme
-    bilgilerinizi almaz veya saklamaz.</p>
+    <h3>7. Uygulama İçi Satın Alımlar</h3>
+    <p>Satın alımlar ve abonelikler Apple App Store veya Google Play Store tarafından işlenir.
+    ZenFlow ödeme bilgilerinizi hiçbir zaman almaz veya saklamaz; hesap oluşturulmaz. Neyi
+    açtığınız yalnızca cihazınızda kayıtlıdır.</p>
 
-    <h3>6. Analitik &amp; Çökme Raporlaması</h3>
-    <p>ZenFlow <strong>reklam veya analitik SDK'sı içermez</strong> (Firebase Analytics, Mixpanel
-    vb. yok) ve davranışınızı izlemez, kullanım profili oluşturmaz.</p>
-    <p>Sürüm yapılarında, anonim çökme tanılaması için isteğe bağlı <strong>Sentry</strong> çökme
-    raporlaması etkinleştirilebilir. Etkinleştirildiğinde <strong>hiçbir kişisel veri</strong> ve
-    <strong>hiçbir kullanım izi</strong> göndermez — yalnızca hataları düzeltmek için gereken
-    teknik çökme yığın izlerini iletir.</p>
+    <h3>8. Analitik, Reklam ve Çökme Raporlaması Yok</h3>
+    <p>ZenFlow <strong>hiçbir reklam, analitik, atıf veya çökme raporlama SDK'sı
+    içermez</strong> (Firebase Analytics, Mixpanel, Sentry vb. yok). Davranışınızı izlemez,
+    kullanım profili oluşturmaz, size bir tanımlayıcı atamaz. Uygulamanın gizlilik manifesti
+    hiçbir izleme ve izleme alan adı beyan etmez.</p>
+    <p>Yazı tipleri uygulamanın içine gömülüdür; ZenFlow açılışta bir içerik ağından yazı tipi
+    indirmez.</p>
+    <p>Önceki sürümlerde isteğe bağlı Google Drive yedekleme ve isteğe bağlı çökme raporlaması
+    vardı. Her iki özellik de, arkalarındaki üçüncü taraf SDK'larla birlikte uygulamadan tamamen
+    kaldırıldı. ZenFlow'da artık bulut yedekleme yoktur ve sizden Google hesabınızla giriş
+    yapmanız istenmez.</p>
 
-    <h3>7. Çocukların Gizliliği</h3>
+    <h3>9. Çocukların Gizliliği</h3>
     <p>ZenFlow 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek bilgi toplamayız.</p>
 
-    <h3>8. Veri Silme</h3>
-    <p>ZenFlow hesap oluşturmaz. Uygulama içinde kayıtları silerek veya uygulamayı cihazınızdan
-    kaldırarak tüm verilerinizi kalıcı olarak kaldırabilirsiniz.</p>
+    <h3>10. Veri Silme</h3>
+    <p>ZenFlow hesap oluşturmaz; dolayısıyla bizde silinecek bir şey ve bizden talep edeceğiniz
+    bir şey yoktur. Verilerinizi, uygulama içinde kayıtları silerek — ki bu ses kayıtlarını da
+    siler — veya uygulamayı kaldırarak kalıcı olarak yok edebilirsiniz; kaldırma işlemi
+    veritabanını ve dosyaları cihazınızdan siler.</p>
 
-    <h3>9. Değişiklikler &amp; İletişim</h3>
+    <h3>11. Değişiklikler &amp; İletişim</h3>
     <p>Bu politikada önemli bir değişiklik olduğunda kullanıcıları uygulama içi bildirimle
     haberdar edeceğiz. Gizlilik sorularınız için:
     <a href="mailto:kaan.yikik@gmail.com">kaan.yikik@gmail.com</a></p>
